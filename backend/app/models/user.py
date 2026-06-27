@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from datetime import datetime
 
 from app.database.database import Base
+from sqlalchemy.orm import relationship
 
 
 class User(Base):
@@ -25,4 +26,10 @@ class User(Base):
         DateTime,
         default=datetime.utcnow,
         onupdate=datetime.utcnow
+    )
+
+    meetings = relationship(
+        "Meeting",
+        back_populates="owner",
+        cascade="all, delete-orphan"
     )

@@ -4,6 +4,7 @@ from sqlalchemy import text
 from app.database.database import engine
 from app.routers.auth import router as auth_router
 from app.routers.user import router as user_router
+from app.routers.meeting import router as meeting_router
 
 app = FastAPI(
     title="MeetMind AI API",
@@ -12,6 +13,7 @@ app = FastAPI(
 )
 app.include_router(auth_router)
 app.include_router(user_router)
+app.include_router(meeting_router)
 
 @app.get("/")
 def root():
