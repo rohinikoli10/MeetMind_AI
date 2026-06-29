@@ -50,4 +50,4 @@ AI Stack (Planned):
 
 ✅ Sprint 5 - AI Intelligence
 
-⬜ Sprint 6 - RAG
+✅ Sprint 6 - RAG
