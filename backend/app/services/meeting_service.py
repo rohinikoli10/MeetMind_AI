@@ -6,7 +6,8 @@ from app.models.meeting import Meeting
 from app.repositories.meeting_repository import MeetingRepository
 from app.schemas.meeting_schema import MeetingCreate
 from app.utils.file_manager import FileManager
-
+from fastapi import BackgroundTasks
+from app.services.transcript_service import TranscriptService
 
 class MeetingService:
 
@@ -16,6 +17,7 @@ class MeetingService:
         meeting_data: MeetingCreate,
         file: UploadFile,
         current_user,
+        background_tasks: BackgroundTasks,
     ) -> Meeting:
 
         FileManager.validate_file(file)
@@ -41,10 +43,17 @@ class MeetingService:
                 processing_status=MeetingStatus.UPLOADED,
             )
 
-            return MeetingRepository.create_meeting(
+            meeting = MeetingRepository.create_meeting(
                 db,
                 meeting
             )
+
+            background_tasks.add_task(
+                TranscriptService.process_meeting,
+                meeting.id,
+            )
+
+            return meeting
 
         except Exception:
 

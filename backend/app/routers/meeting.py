@@ -4,6 +4,7 @@ from fastapi import (
     File,
     Form,
     UploadFile,
+    BackgroundTasks,
     status,
 )
 from sqlalchemy.orm import Session
@@ -17,6 +18,7 @@ from app.schemas.meeting_schema import (
 )
 from app.services.meeting_service import MeetingService
 
+
 router = APIRouter(
     prefix="/meetings",
     tags=["Meetings"],
@@ -29,6 +31,7 @@ router = APIRouter(
     status_code=status.HTTP_201_CREATED,
 )
 def upload_meeting(
+    background_tasks: BackgroundTasks,
     title: str = Form(...),
     description: str | None = Form(None),
     meeting_type: MeetingType = Form(...),
@@ -51,4 +54,5 @@ def upload_meeting(
         meeting_data=meeting_data,
         file=file,
         current_user=current_user,
+        background_tasks=background_tasks,
     )

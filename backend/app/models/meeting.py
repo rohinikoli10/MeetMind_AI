@@ -81,3 +81,10 @@ class Meeting(Base):
         "User",
         back_populates="meetings",
     )
+
+    transcript = relationship(
+        "Transcript",
+        back_populates="meeting",
+        uselist=False,
+        cascade="all, delete-orphan",
+    )

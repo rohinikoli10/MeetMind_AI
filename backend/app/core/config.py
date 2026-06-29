@@ -13,5 +13,15 @@ class Settings:
         os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30)
     )
 
+    # Whisper Configuration
+    WHISPER_MODEL = os.getenv("WHISPER_MODEL", "base")
+
+    WHISPER_DEVICE = os.getenv("WHISPER_DEVICE", "cpu")
+
+    WHISPER_COMPUTE_TYPE = os.getenv(
+        "WHISPER_COMPUTE_TYPE",
+        "int8"
+    )
+
 
 settings = Settings()
