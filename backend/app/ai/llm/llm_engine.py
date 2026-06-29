@@ -60,3 +60,28 @@ class LLMEngine:
         content = response.choices[0].message.content
 
         return json.loads(content)
+    
+
+    @classmethod
+    def generate_text(
+        cls,
+        prompt: str,
+    ) -> str:
+
+        client = cls.get_client()
+
+        response = client.chat.completions.create(
+
+        model=settings.LLM_MODEL,
+
+        messages=[
+            {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
+
+        temperature=0.2,
+        )
+
+        return response.choices[0].message.content

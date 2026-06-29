@@ -39,5 +39,24 @@ class Settings:
         "llama-3.3-70b-versatile",
     )
 
+    # Embedding Configuration
+
+    EMBEDDING_MODEL = os.getenv(
+        "EMBEDDING_MODEL",
+        "all-MiniLM-L6-v2",
+    )
+
+    # ChromaDB Configuration
+
+    CHROMA_DB_PATH = os.getenv(
+        "CHROMA_DB_PATH",
+        "./chromadb",
+    )
+
+    CHROMA_COLLECTION = os.getenv(
+        "CHROMA_COLLECTION",
+        "meetmind_transcripts",
+    )
+
 
 settings = Settings()
