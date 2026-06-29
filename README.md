@@ -44,10 +44,10 @@ AI Stack (Planned):
 
 ✅ Sprint 2 - Authentication Module
 
-⬜ Sprint 3 - Meeting Upload
+✅ Sprint 3 - Meeting Upload
 
-⬜ Sprint 4 - Audio Processing
+✅ Sprint 4 - Audio Processing
 
-⬜ Sprint 5 - AI Intelligence
+✅ Sprint 5 - AI Intelligence
 
 ⬜ Sprint 6 - RAG
