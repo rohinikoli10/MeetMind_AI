@@ -8,6 +8,9 @@ from app.models.transcript import Transcript
 from app.database.database import SessionLocal
 from app.repositories.meeting_repository import MeetingRepository
 from app.repositories.transcript_repository import TranscriptRepository
+from app.services.indexing_service import (
+    IndexingService,
+)
 
 
 class TranscriptService:
@@ -64,8 +67,14 @@ class TranscriptService:
                     db,
                     meeting.id,
                 )
+
             except Exception as e:
                 print(f"Analysis failed: {e}")
+
+            IndexingService.index_meeting(
+                    db,
+                    meeting.id,
+                )
 
             MeetingRepository.update_processing_status(
                 db,
