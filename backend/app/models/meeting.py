@@ -88,3 +88,10 @@ class Meeting(Base):
         uselist=False,
         cascade="all, delete-orphan",
     )
+
+    analysis = relationship(
+        "MeetingAnalysis",
+        back_populates="meeting",
+        uselist=False,
+        cascade="all, delete-orphan",
+    )

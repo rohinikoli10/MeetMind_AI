@@ -3,7 +3,7 @@ from app.ai.speech.audio_pipeline import AudioPipeline
 from app.ai.speech.whisper_engine import WhisperEngine
 import traceback
 from app.constants.meeting_status import MeetingStatus
-
+from app.services.analysis_service import AnalysisService
 from app.models.transcript import Transcript
 from app.database.database import SessionLocal
 from app.repositories.meeting_repository import MeetingRepository
@@ -53,10 +53,19 @@ class TranscriptService:
                 processing_time=result.processing_time,
             )
 
-            TranscriptRepository.create_transcript(
+            transcript = TranscriptRepository.create_transcript(
                 db,
                 transcript,
             )
+
+            # Automatically analyze transcript
+            try:
+                AnalysisService.analyze_meeting(
+                    db,
+                    meeting.id,
+                )
+            except Exception as e:
+                print(f"Analysis failed: {e}")
 
             MeetingRepository.update_processing_status(
                 db,
