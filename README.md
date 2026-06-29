@@ -2,21 +2,21 @@
 
 An AI-powered Meeting Intelligence Platform that transforms meeting recordings into searchable knowledge.
 
-## ✨ Features
+## Features
 
-- 🔐 JWT Authentication
-- 📁 Secure Meeting Upload
-- 🎥 Audio & Video Processing
-- 🎙️ Automatic Speech-to-Text using Faster-Whisper
-- ⚡ Background AI Processing
-- 📝 AI-Generated Meeting Summaries
-- 📋 Minutes of Meeting (MoM)
-- ✅ Action Item Extraction
-- 🎯 Decision Extraction
-- 📌 Key Topic Identification
-- 😊 Meeting Sentiment Analysis
-- 🗄️ PostgreSQL Database
-- 🏗️ Clean Layered Architecture
+- JWT Authentication
+- Secure Meeting Upload
+- Background Processing
+- Faster-Whisper Transcription
+- AI Meeting Summaries
+- Minutes of Meeting
+- Action Item Extraction
+- Decision Extraction
+- Sentiment Analysis
+- MiniLM Embeddings
+- ChromaDB Vector Database
+- Semantic Search
+- RAG Chat Across Meetings
 
 ## Tech Stack
 
